@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
     public_id: { type: String, required: false },
     hometown: { type: Date, required: true },
     travelDates: { type: Date, required: true },
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
   },
   { timestamps: true }
 ); //store the timestamps of when the document was created and last updated.
