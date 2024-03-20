@@ -1,4 +1,6 @@
-interface User {
+import { ObjectId } from "mongoose";
+
+export interface User {
   _id: string;
   userName: string;
   email: string;
@@ -13,4 +15,5 @@ interface User {
   likes?: string;
   requests?: string;
   connections?: string;
+  favDestinations?: string;
 }
