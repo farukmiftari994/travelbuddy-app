@@ -3,6 +3,7 @@ const typeDefs = `#graphql
     id: ID!
     email: String!
     username: String!
+    password: String!
   }
   type Query {
     users: [User]
