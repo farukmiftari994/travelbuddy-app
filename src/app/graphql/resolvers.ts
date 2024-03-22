@@ -28,6 +28,7 @@ const resolvers = {
         console.log(error);
       }
     },
+    // find one user by id
     user: async (parent: any, args: param) => {
       try {
         await dbConnect();
@@ -56,7 +57,7 @@ const resolvers = {
       try {
         await dbConnect();
         const updatedUser = await UserModel.findByIdAndUpdate(
-          // TODO - do this with the token and not the id
+          // TODO - do this with the token and not the id (or get the session of a user from next auth)
           params.id,
           { email: params.email },
           { new: true }
@@ -70,9 +71,15 @@ const resolvers = {
       // TODO: implement JWT and add token
       console.log(params);
       try {
+        const userAlreadyExists = await UserModel.findOne({
+          email: params.input.email,
+        });
+        if (userAlreadyExists) {
+          throw new Error("User already exists");
+        }
         await dbConnect();
-        const user = await UserModel.create(params.input);
-        return user;
+        const newUser = await UserModel.create(params.input);
+        return newUser;
       } catch (error) {
         console.log(error);
       }

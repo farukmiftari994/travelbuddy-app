@@ -5,7 +5,11 @@ const typeDefs = `#graphql
     userName: String!
     password: String!
   }
-
+  type Query {
+    users: [User]
+    user: User
+    user(id: ID!): User
+  }
   input NewUserInput {
     email: String!
     userName: String!
@@ -20,11 +24,7 @@ const typeDefs = `#graphql
   favDestinations: String
   }
   
-  type Query {
-    users: [User]
-    user: User
-    
-  }
+
   type Mutation {
     createUser(input: NewUserInput!): User
     # createUser(email: String, userName: String, password: String): User
