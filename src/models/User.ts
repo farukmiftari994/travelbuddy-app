@@ -1,9 +1,7 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    //define the structure of your documents within a MongoDB collection
-
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     userName: { type: String, required: true },
@@ -11,7 +9,13 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const UserModel = mongoose.model("user", userSchema);
+let UserModel: any;
+
+try {
+  UserModel = mongoose.model("User");
+} catch {
+  UserModel = mongoose.model("User", userSchema);
+}
 
 export default UserModel;
 
@@ -39,5 +43,3 @@ export default UserModel;
 
 // const UserModel = mongoose.model("user", userSchema); //creates a model from the schema. Name should be singularized.
 // //A model is a class with which you construct documents.
-
-// export default UserModel;
