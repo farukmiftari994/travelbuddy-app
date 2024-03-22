@@ -15,9 +15,12 @@
 //   connections?: string;
 // }
 
-interface User {
+import { ObjectId } from "mongoose";
+
+export interface User {
   _id: string;
   email: string;
   password: string;
   userName: string;
+  favDestinations?: string;
 }
