@@ -1,7 +1,6 @@
-import { User } from "@/@types/user";
+import { User } from "@/@types/User";
 import dbConnect from "@/lib/connectDB";
 import UserModel from "@/models/users";
-
 import React from "react";
 
 type Props = {};
@@ -15,7 +14,13 @@ const UsersSC = async (props: Props) => {
       <h3>This is a test component on the server side</h3>
       <ul>
         {users.map((user) => {
-          return <li key={user._id.toString()}>{user.userName}</li>;
+          return (
+            <>
+              <div key={user._id.toString()}>
+                <li>{user.firstName}</li>
+              </div>
+            </>
+          );
         })}
       </ul>
     </div>
