@@ -5,10 +5,12 @@ const typeDefs = `#graphql
     userName: String!
     password: String!
   }
+  type successMessage{
+    message: String!
+  }
   type Query {
     users: [User]
     user: User
-    user(id: ID!): User
   }
   input NewUserInput {
     email: String!

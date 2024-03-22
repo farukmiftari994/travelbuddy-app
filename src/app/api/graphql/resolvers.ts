@@ -1,5 +1,7 @@
 import dbConnect from "@/lib/connectDB";
 import UserModel from "@/models/users";
+import { myContext } from "./route";
+import { GraphQLError } from "graphql";
 
 type param = {
   input: {
@@ -52,9 +54,18 @@ const resolvers = {
     },
     updateUsersEmail: async (
       _: undefined,
-      params: { id: string; email: string }
+      params: { id: string; email: string },
+      contextValue: myContext
     ) => {
       try {
+        if (!contextValue.session) {
+          return new GraphQLError("User is not authenticated", {
+            extensions: {
+              code: "UNAUTHENTICATED",
+              http: { status: 401 },
+            },
+          });
+        }
         await dbConnect();
         const updatedUser = await UserModel.findByIdAndUpdate(
           // TODO - do this with the token and not the id (or get the session of a user from next auth)
@@ -63,12 +74,13 @@ const resolvers = {
           { new: true }
         );
         return updatedUser;
+        // return { message: "Email updated" };
       } catch (error) {
         console.log(error);
       }
     },
     signup: async (_: undefined, params: param) => {
-      // TODO: implement JWT and add token
+      // TODO: implement JWT and add token / add sessions of user?
       console.log(params);
       try {
         const userAlreadyExists = await UserModel.findOne({

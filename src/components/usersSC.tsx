@@ -18,6 +18,10 @@ const UsersSC = async (props: Props) => {
             <>
               <div key={user._id.toString()}>
                 <li>{user.firstName}</li>
+                <li>{user.lastName}</li>
+                <li>{user.email}</li>
+                <li>{user.password}</li>
+                <li>{user.userName}</li>
               </div>
             </>
           );
