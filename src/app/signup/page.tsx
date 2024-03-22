@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -56,7 +56,17 @@ const Signup = () => {
       }
       if (res.status === 200) {
         setError("");
-        router.push("/login");
+        const signedInRes = await signIn("credentials", {
+          redirect: false,
+          email,
+          password,
+        });
+        if (signedInRes?.error) {
+          setError("Invalid email or password");
+          if (signedInRes?.url) router.replace("/dashboard");
+        } else {
+          setError("");
+        }
       }
     } catch (error) {
       setError("Error, try again");

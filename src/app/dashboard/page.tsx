@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
 const Dashboard = async () => {
-  const session = await getServerSession();
+  const session = await getServerSession(); //in server component
   if (!session) {
     redirect("/");
   }
