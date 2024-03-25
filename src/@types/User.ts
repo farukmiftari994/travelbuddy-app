@@ -18,6 +18,14 @@ export default interface User {
 
 export interface TestUser {
   _id: string;
+  userName: string;
+  email: string;
+  password: string;
+  favDestinations?: string;
+}
+
+export interface TestUser {
+  _id: string;
   email: string;
   password: string;
   userName: string;

@@ -3,31 +3,78 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  background-color: #9bb6c9;
+  /* background-color: #6bc7aa; */
+  /* margin-top: 90px; */
+  height: 100vh;
+}
+.main_h1 > h1 {
+  font-family: "Simple", sans-serif;
+  font-size: 82px !important;
+  font-weight: 120px;
+  -webkit-text-stroke: 4px white;
+  text-shadow: 7px 7px 7px rgb(118, 118, 225);
+  letter-spacing: 4px;
+  /* font-style: italic; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.details > div > p {
+  font-family: "Simple", sans-serif;
+  font-size: 50px;
+  font-weight: 120px;
+  -webkit-text-stroke: 2px white;
+  letter-spacing: 3px;
+}
+
+.details > img {
+  /* margin-top: 50px; */
+  animation-name: rotate;
+  animation-duration: 27s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /* border-radius: 50%; */
+}
+
+@font-face {
+  font-family: "Simple";
+  src: url("../font/Simple.otf");
+}
+@font-face {
+  font-family: "Bradley";
+  src: url("../font/ITCBradleyHandStd.ttf");
+}
+
+/* body {
+  font-family: "MyCustomFont", sans-serif;
+} */
+
+h3 {
+  font-family: "Bradley";
+  font-weight: bold;
+  -webkit-text-stroke: 1px black;
+  color: black;
+}
+.ButtonGetStarted {
+  margin-top: 30px;
+  font-weight: bold !important;
+  width: 70% !important;
+  font-size: 20px;
+}
+
+img {
+  /* margin-top: 90px; */
+  animation-name: rotate;
+  /* animation-duration: 27s; */
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /* border-radius: 50%; */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-360deg);
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  to {
+    transform: rotate(360deg);
   }
 }
