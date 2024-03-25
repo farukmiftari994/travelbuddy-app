@@ -1,4 +1,4 @@
-import { User } from "@/@types/User";
+import User from "@/@types/User";
 import dbConnect from "@/lib/connectDB";
 import UserModel from "@/models/users";
 import React from "react";
@@ -20,7 +20,6 @@ const UsersSC = async (props: Props) => {
                 <li>{user.firstName}</li>
                 <li>{user.lastName}</li>
                 <li>{user.email}</li>
-                <li>{user.password}</li>
                 <li>{user.userName}</li>
               </div>
             </>

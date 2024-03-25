@@ -29,16 +29,13 @@ const Signup = () => {
       setError("Email is invalid");
       return;
     }
-
     if (!password || password.length < 5) {
       setError("Password is invalid");
       return;
     }
-
     if (userName === "") {
       return;
     }
-
     try {
       const res = await fetch("/api/signup", {
         method: "POST",
@@ -52,7 +49,7 @@ const Signup = () => {
         }),
       });
       if (res.status === 400) {
-        setError("This email is alread registered");
+        setError("This email is already registered");
       }
       if (res.status === 200) {
         setError("");
