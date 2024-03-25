@@ -1,7 +1,8 @@
 import Image from "next/image";
 import image from "../../img/klipartz_cut.png";
+import MultiStep from "./multi_step/MultiStep";
 
-export default function LoginPage2() {
+export default function SingupPage2() {
   return (
     <>
       <div className="flex items-center">
@@ -18,7 +19,11 @@ export default function LoginPage2() {
           Travel Buddy
         </h1>
       </div>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex text-white min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <MultiStep showStepNumber={true} />
+      </div>
+
+      {/* <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Create Account
         </h2>
@@ -82,7 +87,7 @@ export default function LoginPage2() {
             </a>
           </p>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
